@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar';
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Provider from './_trpc/Provider';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -24,8 +25,10 @@ export default function RootLayout({
 					inter.className
 				)}
 			>
-				<Navbar />
-				{children}
+				<Provider>
+					<Navbar />
+					{children}
+				</Provider>
 			</body>
 		</html>
 	);
