@@ -81,6 +81,7 @@ const onUploadComplete = async ({
 					id: createdFile.id,
 				},
 			});
+			throw new Error('Exceeded pages limit');
 		}
 
 		// vectorize and index entire document

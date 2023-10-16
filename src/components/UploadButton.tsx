@@ -58,6 +58,19 @@ const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
 						variant: 'destructive',
 					});
 				}
+
+				// upload size
+
+				if (acceptedFile[0].size > (isSubscribed ? 16 : 4) * 1000000) {
+					return toast({
+						title: 'File too large',
+						description: `Please upload a file less than ${
+							isSubscribed ? '16' : '4'
+						}MB`,
+						variant: 'destructive',
+					});
+				}
+
 				setIsUploading(true);
 
 				const progressInterval = startSimulatedProgress();
@@ -108,6 +121,7 @@ const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
 									and drop
 								</p>
 								<p className="text-xs text-zinc-500">
+									{isSubscribed}
 									PDF (up to {isSubscribed ? '16' : '4'}MB)
 								</p>
 							</div>
@@ -172,7 +186,7 @@ const UploadButton = ({ isSubscribed }: { isSubscribed: boolean }) => {
 			</DialogTrigger>
 
 			<DialogContent>
-				<UploadDropzone isSubscribed />
+				<UploadDropzone isSubscribed={isSubscribed} />
 			</DialogContent>
 		</Dialog>
 	);
