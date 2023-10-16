@@ -6,6 +6,8 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import Provider from './_trpc/Provider';
 import './globals.css';
 
+import { Toaster } from '@/components/ui/toaster';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -27,6 +29,7 @@ export default function RootLayout({
 				)}
 			>
 				<Provider>
+					<Toaster />
 					<Navbar />
 					{children}
 				</Provider>
